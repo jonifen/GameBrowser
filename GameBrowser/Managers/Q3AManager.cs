@@ -36,7 +36,8 @@ namespace GameBrowser.Managers
             return new ServerDetails
             {
                 Name = "Unknown",
-                Players = new List<Player>()
+                Players = new List<Player>(),
+                AllDetails = new Dictionary<string, string>()
             };
         }
     }

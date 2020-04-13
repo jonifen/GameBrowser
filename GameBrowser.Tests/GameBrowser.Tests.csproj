@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Managers\Q3AManagerTests.cs" />
     <Compile Include="Mappers\Q3AServerResponseMapperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -54,9 +55,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GameBrowser\GameBrowser.csproj">
+    <ProjectReference Include="..\GameBrowser.UI\GameBrowser.UI.csproj">
       <Project>{E4E6687B-7C18-433B-8BE7-67DA14C388BA}</Project>
-      <Name>GameBrowser</Name>
+      <Name>GameBrowser.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,4 @@
-﻿namespace GameBrowser
+﻿namespace GameBrowser.UI
 {
     partial class frmBrowser
     {

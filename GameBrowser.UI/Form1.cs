@@ -3,7 +3,7 @@ using GameBrowser.Models.Q3A;
 using System;
 using System.Windows.Forms;
 
-namespace GameBrowser
+namespace GameBrowser.UI
 {
     public partial class frmBrowser : Form
     {
@@ -56,7 +56,7 @@ namespace GameBrowser
             serverListGrid.Rows[serverRowIndex].Cells[3].Value = serverDetails.Ping.ToString();
             serverListGrid.Rows[serverRowIndex].Cells[4].Value = $"{serverDetails.Players.Count.ToString()}/{serverDetails.MaxClients.ToString()}";
             serverListGrid.Rows[serverRowIndex].Cells[5].Value = serverDetails.GameName;
-            serverListGrid.Rows[serverRowIndex].Cells[6].Value = serverDetails.MapName.ToLower();
+            serverListGrid.Rows[serverRowIndex].Cells[6].Value = serverDetails.MapName;
 
             // Server Info list
             serverInfoGrid.Rows.Clear();
