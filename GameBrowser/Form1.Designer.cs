@@ -32,7 +32,7 @@
             this.sbrlbl_Status = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.spcWindowSplitter = new System.Windows.Forms.SplitContainer();
-            this.grdServerList = new System.Windows.Forms.DataGridView();
+            this.serverListGrid = new System.Windows.Forms.DataGridView();
             this.colServerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colServerIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colServerPort = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,11 +41,11 @@
             this.colServerMod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colServerMap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.spcPlayersAndInfo = new System.Windows.Forms.SplitContainer();
-            this.grdPlayerInfo = new System.Windows.Forms.DataGridView();
+            this.playerListGrid = new System.Windows.Forms.DataGridView();
             this.colPlyInf_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPlyInf_Points = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPlyInf_Ping = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.grdServerInfo = new System.Windows.Forms.DataGridView();
+            this.serverInfoGrid = new System.Windows.Forms.DataGridView();
             this.colSvrInf_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSvrInf_Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -60,15 +60,17 @@
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spcWindowSplitter)).BeginInit();
             this.spcWindowSplitter.Panel1.SuspendLayout();
             this.spcWindowSplitter.Panel2.SuspendLayout();
             this.spcWindowSplitter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdServerList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.serverListGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spcPlayersAndInfo)).BeginInit();
             this.spcPlayersAndInfo.Panel1.SuspendLayout();
             this.spcPlayersAndInfo.Panel2.SuspendLayout();
             this.spcPlayersAndInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdPlayerInfo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdServerInfo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playerListGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.serverInfoGrid)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,7 +109,7 @@
             // 
             // spcWindowSplitter.Panel1
             // 
-            this.spcWindowSplitter.Panel1.Controls.Add(this.grdServerList);
+            this.spcWindowSplitter.Panel1.Controls.Add(this.serverListGrid);
             // 
             // spcWindowSplitter.Panel2
             // 
@@ -116,19 +118,19 @@
             this.spcWindowSplitter.SplitterDistance = 144;
             this.spcWindowSplitter.TabIndex = 2;
             // 
-            // grdServerList
+            // serverListGrid
             // 
-            this.grdServerList.AllowUserToAddRows = false;
-            this.grdServerList.AllowUserToDeleteRows = false;
-            this.grdServerList.AllowUserToResizeColumns = false;
-            this.grdServerList.AllowUserToResizeRows = false;
-            this.grdServerList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdServerList.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            this.grdServerList.ColumnHeadersHeight = 20;
-            this.grdServerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.grdServerList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.serverListGrid.AllowUserToAddRows = false;
+            this.serverListGrid.AllowUserToDeleteRows = false;
+            this.serverListGrid.AllowUserToResizeColumns = false;
+            this.serverListGrid.AllowUserToResizeRows = false;
+            this.serverListGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.serverListGrid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            this.serverListGrid.ColumnHeadersHeight = 20;
+            this.serverListGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.serverListGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colServerName,
             this.colServerIP,
             this.colServerPort,
@@ -136,17 +138,17 @@
             this.colServerPlayerCount,
             this.colServerMod,
             this.colServerMap});
-            this.grdServerList.Location = new System.Drawing.Point(0, 0);
-            this.grdServerList.Name = "grdServerList";
-            this.grdServerList.ReadOnly = true;
-            this.grdServerList.RowHeadersVisible = false;
-            this.grdServerList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.grdServerList.RowTemplate.Height = 20;
-            this.grdServerList.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdServerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdServerList.Size = new System.Drawing.Size(663, 144);
-            this.grdServerList.TabIndex = 3;
-            this.grdServerList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdServerList_CellClick);
+            this.serverListGrid.Location = new System.Drawing.Point(0, 0);
+            this.serverListGrid.Name = "serverListGrid";
+            this.serverListGrid.ReadOnly = true;
+            this.serverListGrid.RowHeadersVisible = false;
+            this.serverListGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.serverListGrid.RowTemplate.Height = 20;
+            this.serverListGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.serverListGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.serverListGrid.Size = new System.Drawing.Size(663, 144);
+            this.serverListGrid.TabIndex = 3;
+            this.serverListGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdServerList_CellClick);
             // 
             // colServerName
             // 
@@ -229,35 +231,35 @@
             // 
             // spcPlayersAndInfo.Panel1
             // 
-            this.spcPlayersAndInfo.Panel1.Controls.Add(this.grdPlayerInfo);
+            this.spcPlayersAndInfo.Panel1.Controls.Add(this.playerListGrid);
             // 
             // spcPlayersAndInfo.Panel2
             // 
-            this.spcPlayersAndInfo.Panel2.Controls.Add(this.grdServerInfo);
+            this.spcPlayersAndInfo.Panel2.Controls.Add(this.serverInfoGrid);
             this.spcPlayersAndInfo.Size = new System.Drawing.Size(663, 204);
             this.spcPlayersAndInfo.SplitterDistance = 422;
             this.spcPlayersAndInfo.TabIndex = 3;
             // 
-            // grdPlayerInfo
+            // playerListGrid
             // 
-            this.grdPlayerInfo.AllowUserToAddRows = false;
-            this.grdPlayerInfo.AllowUserToDeleteRows = false;
-            this.grdPlayerInfo.ColumnHeadersHeight = 20;
-            this.grdPlayerInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.grdPlayerInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.playerListGrid.AllowUserToAddRows = false;
+            this.playerListGrid.AllowUserToDeleteRows = false;
+            this.playerListGrid.ColumnHeadersHeight = 20;
+            this.playerListGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.playerListGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colPlyInf_Name,
             this.colPlyInf_Points,
             this.colPlyInf_Ping});
-            this.grdPlayerInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdPlayerInfo.Location = new System.Drawing.Point(0, 0);
-            this.grdPlayerInfo.Name = "grdPlayerInfo";
-            this.grdPlayerInfo.ReadOnly = true;
-            this.grdPlayerInfo.RowHeadersVisible = false;
-            this.grdPlayerInfo.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.grdPlayerInfo.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdPlayerInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdPlayerInfo.Size = new System.Drawing.Size(422, 204);
-            this.grdPlayerInfo.TabIndex = 0;
+            this.playerListGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.playerListGrid.Location = new System.Drawing.Point(0, 0);
+            this.playerListGrid.Name = "playerListGrid";
+            this.playerListGrid.ReadOnly = true;
+            this.playerListGrid.RowHeadersVisible = false;
+            this.playerListGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.playerListGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.playerListGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.playerListGrid.Size = new System.Drawing.Size(422, 204);
+            this.playerListGrid.TabIndex = 0;
             // 
             // colPlyInf_Name
             // 
@@ -285,26 +287,26 @@
             this.colPlyInf_Ping.ReadOnly = true;
             this.colPlyInf_Ping.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // grdServerInfo
+            // serverInfoGrid
             // 
-            this.grdServerInfo.AllowUserToAddRows = false;
-            this.grdServerInfo.AllowUserToDeleteRows = false;
-            this.grdServerInfo.AllowUserToResizeColumns = false;
-            this.grdServerInfo.AllowUserToResizeRows = false;
-            this.grdServerInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdServerInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdServerInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.serverInfoGrid.AllowUserToAddRows = false;
+            this.serverInfoGrid.AllowUserToDeleteRows = false;
+            this.serverInfoGrid.AllowUserToResizeColumns = false;
+            this.serverInfoGrid.AllowUserToResizeRows = false;
+            this.serverInfoGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.serverInfoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.serverInfoGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSvrInf_Name,
             this.colSvrInf_Value});
-            this.grdServerInfo.Location = new System.Drawing.Point(0, 0);
-            this.grdServerInfo.Name = "grdServerInfo";
-            this.grdServerInfo.ReadOnly = true;
-            this.grdServerInfo.RowHeadersVisible = false;
-            this.grdServerInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdServerInfo.Size = new System.Drawing.Size(237, 204);
-            this.grdServerInfo.TabIndex = 0;
+            this.serverInfoGrid.Location = new System.Drawing.Point(0, 0);
+            this.serverInfoGrid.Name = "serverInfoGrid";
+            this.serverInfoGrid.ReadOnly = true;
+            this.serverInfoGrid.RowHeadersVisible = false;
+            this.serverInfoGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.serverInfoGrid.Size = new System.Drawing.Size(237, 204);
+            this.serverInfoGrid.TabIndex = 0;
             // 
             // colSvrInf_Name
             // 
@@ -342,13 +344,13 @@
             this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFileExit});
             this.mnuFile.Name = "mnuFile";
-            this.mnuFile.Size = new System.Drawing.Size(36, 20);
+            this.mnuFile.Size = new System.Drawing.Size(37, 20);
             this.mnuFile.Text = "&File";
             // 
             // mnuFileExit
             // 
             this.mnuFileExit.Name = "mnuFileExit";
-            this.mnuFileExit.Size = new System.Drawing.Size(97, 22);
+            this.mnuFileExit.Size = new System.Drawing.Size(93, 22);
             this.mnuFileExit.Text = "E&xit";
             this.mnuFileExit.Click += new System.EventHandler(this.mnuFileExit_Click);
             // 
@@ -358,14 +360,14 @@
             this.mnuServerManage,
             this.mnuServerSelected});
             this.mnuServer.Name = "mnuServer";
-            this.mnuServer.Size = new System.Drawing.Size(49, 20);
+            this.mnuServer.Size = new System.Drawing.Size(51, 20);
             this.mnuServer.Text = "&Server";
             // 
             // mnuServerManage
             // 
             this.mnuServerManage.Enabled = false;
             this.mnuServerManage.Name = "mnuServerManage";
-            this.mnuServerManage.Size = new System.Drawing.Size(121, 22);
+            this.mnuServerManage.Size = new System.Drawing.Size(118, 22);
             this.mnuServerManage.Text = "&Manage";
             // 
             // mnuServerSelected
@@ -374,14 +376,14 @@
             this.mnuServerSelectedRefresh});
             this.mnuServerSelected.Enabled = false;
             this.mnuServerSelected.Name = "mnuServerSelected";
-            this.mnuServerSelected.Size = new System.Drawing.Size(121, 22);
+            this.mnuServerSelected.Size = new System.Drawing.Size(118, 22);
             this.mnuServerSelected.Text = "&Selected";
             // 
             // mnuServerSelectedRefresh
             // 
             this.mnuServerSelectedRefresh.Enabled = false;
             this.mnuServerSelectedRefresh.Name = "mnuServerSelectedRefresh";
-            this.mnuServerSelectedRefresh.Size = new System.Drawing.Size(116, 22);
+            this.mnuServerSelectedRefresh.Size = new System.Drawing.Size(113, 22);
             this.mnuServerSelectedRefresh.Text = "&Refresh";
             this.mnuServerSelectedRefresh.Click += new System.EventHandler(this.mnuServerSelectedRefresh_Click);
             // 
@@ -390,14 +392,14 @@
             this.mnuTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuToolsOptions});
             this.mnuTools.Name = "mnuTools";
-            this.mnuTools.Size = new System.Drawing.Size(44, 20);
+            this.mnuTools.Size = new System.Drawing.Size(46, 20);
             this.mnuTools.Text = "&Tools";
             // 
             // mnuToolsOptions
             // 
             this.mnuToolsOptions.Enabled = false;
             this.mnuToolsOptions.Name = "mnuToolsOptions";
-            this.mnuToolsOptions.Size = new System.Drawing.Size(117, 22);
+            this.mnuToolsOptions.Size = new System.Drawing.Size(116, 22);
             this.mnuToolsOptions.Text = "&Options";
             // 
             // mnuHelp
@@ -405,13 +407,13 @@
             this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuHelpAbout});
             this.mnuHelp.Name = "mnuHelp";
-            this.mnuHelp.Size = new System.Drawing.Size(41, 20);
+            this.mnuHelp.Size = new System.Drawing.Size(44, 20);
             this.mnuHelp.Text = "&Help";
             // 
             // mnuHelpAbout
             // 
             this.mnuHelpAbout.Name = "mnuHelpAbout";
-            this.mnuHelpAbout.Size = new System.Drawing.Size(108, 22);
+            this.mnuHelpAbout.Size = new System.Drawing.Size(107, 22);
             this.mnuHelpAbout.Text = "&About";
             this.mnuHelpAbout.Click += new System.EventHandler(this.mnuHelpAbout_Click);
             // 
@@ -432,13 +434,15 @@
             this.statusStrip1.PerformLayout();
             this.spcWindowSplitter.Panel1.ResumeLayout(false);
             this.spcWindowSplitter.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spcWindowSplitter)).EndInit();
             this.spcWindowSplitter.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grdServerList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.serverListGrid)).EndInit();
             this.spcPlayersAndInfo.Panel1.ResumeLayout(false);
             this.spcPlayersAndInfo.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spcPlayersAndInfo)).EndInit();
             this.spcPlayersAndInfo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grdPlayerInfo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdServerInfo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playerListGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.serverInfoGrid)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -452,10 +456,10 @@
         private System.Windows.Forms.ToolStripStatusLabel sbrlbl_Status;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.SplitContainer spcWindowSplitter;
-        private System.Windows.Forms.DataGridView grdServerList;
+        private System.Windows.Forms.DataGridView serverListGrid;
         private System.Windows.Forms.SplitContainer spcPlayersAndInfo;
-        private System.Windows.Forms.DataGridView grdPlayerInfo;
-        private System.Windows.Forms.DataGridView grdServerInfo;
+        private System.Windows.Forms.DataGridView playerListGrid;
+        private System.Windows.Forms.DataGridView serverInfoGrid;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mnuFile;
         private System.Windows.Forms.ToolStripMenuItem mnuFileExit;
