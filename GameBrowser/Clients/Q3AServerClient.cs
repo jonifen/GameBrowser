@@ -1,7 +1,6 @@
 ﻿using GameBrowser.Models;
 using System;
 using System.Net;
-using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Text;
 
@@ -16,27 +15,6 @@ namespace GameBrowser.Clients
         {
             _ipAddress = ipAddress;
             _port = port;
-        }
-
-        public PingResponse Ping()
-        {
-            var pingSvr = new Ping();
-            var pingOpts = new PingOptions();
-
-            // Use default TTL (=128), but change fragmentation behaviour
-            pingOpts.DontFragment = true;
-
-            // Create a buffer of 32 bytes to be transmitted.
-            var buffer = Encoding.ASCII.GetBytes("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            var timeout = 120;
-            var reply = pingSvr.Send(_ipAddress, timeout, buffer, pingOpts);
-            var pingSuccess = reply.Status == IPStatus.Success;
-
-            return new PingResponse
-            {
-                Milliseconds = pingSuccess ? (int)reply.RoundtripTime : 9999,
-                Success = pingSuccess
-            };
         }
 
         public ServerInfoResponse GetInfo(string command)

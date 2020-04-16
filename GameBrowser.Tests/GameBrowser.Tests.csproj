@@ -55,9 +55,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GameBrowser.UI\GameBrowser.UI.csproj">
-      <Project>{E4E6687B-7C18-433B-8BE7-67DA14C388BA}</Project>
-      <Name>GameBrowser.UI</Name>
+    <ProjectReference Include="..\GameBrowser\GameBrowser.csproj">
+      <Project>{43E6705D-90A6-4825-B079-12D4BE5D42A7}</Project>
+      <Name>GameBrowser</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

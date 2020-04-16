@@ -14,5 +14,6 @@ namespace GameBrowser.Models.Q3A
         public IList<Player> Players { get; set; }
         public int Ping { get; set; }
         public int Port { get; set; }
+        public ServerStatus Status { get; set; }
     }
 }

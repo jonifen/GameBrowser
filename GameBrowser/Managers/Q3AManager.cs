@@ -11,7 +11,7 @@ namespace GameBrowser.Managers
         public ServerDetails GetServerDetails(string ipAddress, int port)
         {
             var server = new Q3AServerClient(ipAddress, port);
-            var pingResponse = server.Ping();
+            var pingResponse = new PingClient().Ping(ipAddress);
             var serverResponse = pingResponse.Success ? server.GetInfo("getstatus") : BuildNullServerResponse();
 
             var mappedResponse = serverResponse.Success ? new Q3AServerResponseMapper().Map(serverResponse.Data) : BuildNullServerDetails();
