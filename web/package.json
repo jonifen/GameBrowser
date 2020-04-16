@@ -1,0 +1,12 @@
+{
+  "name": "gamebrowser-web",
+  "version": "1.0.0",
+  "description": "UI layer for the GameBrowser API",
+  "main": "js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "jonifen",
+  "license": "ISC"
+}
