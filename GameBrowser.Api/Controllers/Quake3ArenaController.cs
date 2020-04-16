@@ -10,6 +10,8 @@ namespace GameBrowser.Web.Controllers
     [ApiController]
     public class Quake3ArenaController : ControllerBase
     {
+        // It feels a bit sweaty to have a POST endpoint for getting server info,
+        // but Swagger won't allow a GET endpoint to receive a body payload.
         [HttpPost]
         public async Task<ActionResult> GetServerInfo(ServerInfoRequest request)
         {
