@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GameBrowser.Clients;
+using GameBrowser.Managers;
+using GameBrowser.Mappers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +35,10 @@ namespace GameBrowser.Web
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GameBrowser API", Version = "v1" });
             });
+
+            // Call method in GameBrowser project to configure IoC for its own types
+            // (is there a better way of doing this? How would I do it if it was a NuGet?)
+            new IocSetup().ConfigureServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

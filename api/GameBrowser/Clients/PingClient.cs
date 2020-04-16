@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GameBrowser.Clients
 {
-    public class PingClient
+    public class PingClient : IPingClient
     {
         public PingResponse Ping(string ipAddress)
         {

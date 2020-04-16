@@ -6,18 +6,19 @@ using System.Text;
 
 namespace GameBrowser.Clients
 {
-    public class Q3AServerClient
+    public class Q3AServerClient : IQ3AServerClient
     {
-        string _ipAddress = "";
-        int _port = 0;
-
-        public Q3AServerClient(string ipAddress, int port)
+        public ServerInfoResponse GetInfo(string ipAddress, int port)
         {
-            _ipAddress = ipAddress;
-            _port = port;
+            return GetServerDetails(ipAddress, port, "getinfo");
         }
 
-        public ServerInfoResponse GetInfo(string command)
+        public ServerInfoResponse GetStatus(string ipAddress, int port)
+        {
+            return GetServerDetails(ipAddress, port, "getstatus");
+        }
+
+        private ServerInfoResponse GetServerDetails(string ipAddress, int port, string command)
         {
             // Make connection to game server, send data to server to request server info
             // Get server status: "ÿÿÿÿgetstatus"
@@ -31,7 +32,7 @@ namespace GameBrowser.Clients
             {
                 using (var client = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp))
                 {
-                    client.Connect(IPAddress.Parse(_ipAddress), _port);
+                    client.Connect(IPAddress.Parse(ipAddress), port);
 
                     var bufferTemp = Encoding.ASCII.GetBytes(command);
                     var bufferSend = new Byte[bufferTemp.Length + 5];

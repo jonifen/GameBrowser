@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace GameBrowser.Mappers
 {
-    public class Q3AServerResponseMapper
+    public class Q3AServerResponseMapper : IQ3AServerResponseMapper
     {
         // An example payload broken down by newline character (explains the magic numbers used).
         // [0] = "????statusResponse
@@ -46,7 +46,7 @@ namespace GameBrowser.Mappers
                 GameName = info["gamename"],
                 GameType = info["g_gametype"],
                 MapName = info["mapname"],
-                MaxClients = Convert.ToInt32(info["sv_maxclients"]),
+                MaxClients = int.Parse(info["sv_maxclients"]),
                 Name = info["sv_hostname"]
             };
         }
