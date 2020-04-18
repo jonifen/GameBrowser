@@ -25,10 +25,21 @@ namespace GameBrowser.Web
         }
 
         public IConfiguration Configuration { get; }
+        private readonly string GameBrowserCorsOrigins = "_gamebrowserCorsOrigins";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: GameBrowserCorsOrigins,
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:9000");
+                        builder.WithHeaders("content-type");
+                    });
+            });
+
             services.AddControllers();
 
             services.AddSwaggerGen(c =>
@@ -55,6 +66,8 @@ namespace GameBrowser.Web
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(GameBrowserCorsOrigins);
 
             app.UseHttpsRedirection();
 
