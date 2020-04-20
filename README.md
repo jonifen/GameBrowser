@@ -1,7 +1,30 @@
 # GameBrowser
 
-This is a utility for scanning Quake III Arena servers that I originally built in 2007 in VB6, and started to migrate it to C# back in 2010 before parking it in 2011 when I stopped playing as many online games and had no use for it anymore.
+## History
 
-While on furlough during the COVID-19 pandemic, my family and I have been playing some older games, so I've created a game server on my home server for us to use and dug out this project to help with checking when the server was up. HOWEVER... the biggest problem with digging out old code is that you realise how poor it was and then you get the urge to make it better 😄
+This utility started off as a basic tool for scanning Quake III Arena servers. It was originally written in VB6 back in 2007 and then migrated to C# in 2010 when I started learning the language before parking it in 2011 when my wife and I stopped playing Quake 3 and had no use for it anymore.
 
-In my defence... the original commit was code that was written almost 10 years ago.
+While on furlough during the COVID-19 pandemic, my family and I started playing some older games together, so I've created a game server on my home server for us to use and dug out this project to help with checking when the server was up. HOWEVER... the biggest problem with digging out old code is that you realise how poor it was and then you get the urge to make it better 😄
+
+... and better is hopefully how I've made it :crossedfingers:
+
+## Architecture
+
+The "utility" (if it can still be referred to in this way?) consists of the following:
+
+### Library
+
+The GameBrowser library is located in the `api` directory and is a .NET Standard 2.0 project - my theory being that other people could use it in a Framework project (should they even want to).
+
+### API
+
+The API is a .NET Core 3.1 web api project that consumes the library to expose the necessary functionality via endpoints.
+
+### Web
+
+Written in JavaScript using React, this is a simple web application to query the API based on server data stored in localStorage.
+
+## Known "issues"
+
+* The server querying in the library isn't async, so if you query a server which is down but the server hosting it is still up, you will encounter some serious lag... in fact, I don't think it'll ever recover, so you'd quickly end up in a mess with the API not releasing requests etc. I do intend to look into this, but as it's only for querying our local server at the moment, it's not priority. PRs are welcomed if anyone else has the interest in tackling it though.
+* The UI is pretty bad - I've not started any of the styling yet. I'm torn between going with vanilla CSS or using SASS for the additional learning opportunity it would offer.
