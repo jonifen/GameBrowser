@@ -1,0 +1,23 @@
+.details-table {
+  width: 100%;
+
+  thead {
+    display: table;
+    /* Width is calculated to remove 1rem as 16px is roughly the width of a scrollbar */
+    width: calc(100% - 1rem);
+    table-layout: fixed;
+    font-weight: bold;
+  }
+
+  tbody {
+    height: 10rem;
+    overflow: scroll;
+    display: block;
+  }
+
+  thead tr, tbody tr {
+    table-layout: fixed;
+    width: 100%;
+    display: table;
+  }
+}
