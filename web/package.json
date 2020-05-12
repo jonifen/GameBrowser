@@ -5,7 +5,8 @@
   "main": "js/index.js",
   "scripts": {
     "start": "webpack-dev-server --port 9000",
-    "test": "jest --runInBand"
+    "test": "jest --runInBand",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "jonifen",
