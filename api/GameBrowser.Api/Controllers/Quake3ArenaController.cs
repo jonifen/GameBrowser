@@ -1,10 +1,10 @@
-﻿using GameBrowser.Managers;
+﻿using GameBrowser.Api.Models;
+using GameBrowser.Managers;
 using GameBrowser.Models;
-using GameBrowser.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace GameBrowser.Web.Controllers
+namespace GameBrowser.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -17,10 +17,9 @@ namespace GameBrowser.Web.Controllers
             _q3aManager = q3aManager;
         }
 
-        // It feels a bit sweaty to have a POST endpoint for getting server info,
-        // but Swagger won't allow a GET endpoint to receive a body payload.
-        [HttpPost]
-        public async Task<ActionResult> GetServerInfo(ServerInfoRequest request)
+        [HttpGet]
+        [Route("{IpAddress}/{Port}")]
+        public async Task<ActionResult> GetServerInformation([FromRoute, ModelBinder] ServerInfoRequest request)
         {
             var serverDetails = _q3aManager.GetServerDetails(request.IpAddress, request.Port);
 

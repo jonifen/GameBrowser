@@ -1,4 +1,4 @@
-﻿namespace GameBrowser.Web.Models
+﻿namespace GameBrowser.Api.Models
 {
     public class ServerInfoRequest
     {

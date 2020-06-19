@@ -15,7 +15,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
-namespace GameBrowser.Web
+namespace GameBrowser.Api
 {
     public class Startup
     {
