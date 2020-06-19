@@ -4,6 +4,7 @@
   "description": "UI layer for the GameBrowser API",
   "main": "js/index.js",
   "scripts": {
+    "dev": "set NODE_ENV=development&& webpack-dev-server --port 9000",
     "start": "webpack-dev-server --port 9000",
     "test": "jest --runInBand",
     "build": "webpack"

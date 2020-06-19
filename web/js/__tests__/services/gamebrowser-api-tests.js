@@ -5,9 +5,8 @@ describe('GameBrowser API Service tests', () => {
     const fetchSpy = jest.spyOn(global, 'fetch');
     let response = getServerDetails("127.0.0.1", 27960, "quake3arena");
 
-    expect(fetchSpy).toBeCalledWith("http://localhost:58806/api/quake3arena", {
-      method: 'POST',
-      body: "{\"ipAddress\":\"127.0.0.1\",\"port\":27960}",
+    expect(fetchSpy).toBeCalledWith("http://localhost:58806/api/quake3arena/127.0.0.1/27960", {
+      method: 'GET',
       headers: {
         "Content-Type": "application/json",
       },
