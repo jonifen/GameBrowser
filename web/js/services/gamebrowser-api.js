@@ -4,7 +4,7 @@ export async function getServerDetails(ipAddress, port, game) {
       "quake3arena": "quake3arena"
     };
   
-    return `http://localhost:58806/api/${gameUrls[game]}/${ipAddress}/${port}`;
+    return `${process.env.API_URL}api/${gameUrls[game]}/${ipAddress}/${port}`;
   }
 
   return await fetch(getServiceUrl(), {

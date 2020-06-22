@@ -1,6 +1,7 @@
 var CopyWebpackPlugin = require("copy-webpack-plugin");
 var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 var path = require("path");
+var Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: "./js/index.js",
@@ -27,6 +28,9 @@ module.exports = {
     ],
   },
   plugins: [
+    new Dotenv({
+      path: getDotEnvFilePath(process.env.NODE_ENV)
+    }),
     new CopyWebpackPlugin([
       {
         from: "./public",
@@ -52,3 +56,13 @@ module.exports = {
     }),
   ],
 };
+
+function getDotEnvFilePath(stage) {
+  switch (stage) {
+    case "production":
+      return "./.env.production";
+
+    default:
+      return "./.env.development";
+  }
+}
