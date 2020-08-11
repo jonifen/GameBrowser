@@ -26,5 +26,5 @@ Written in JavaScript using React, this is a simple web application to query the
 
 ## Known "issues"
 
-* The server querying in the library isn't async, so if you query a server which is down but the server hosting it is still up, you will encounter some serious lag... in fact, I don't think it'll ever recover, so you'd quickly end up in a mess with the API not releasing requests etc. I do intend to look into this, but as it's only for querying our local server at the moment, it's not priority. PRs are welcomed if anyone else has the interest in tackling it though.
+* The server querying in the library isn't async (but the pinging *is* since [this commit](https://github.com/jonifen/GameBrowser/commit/1ae8aedcf352dbb6272f38443378b9de1cc68c0b)), so if you query a server which is down but the server hosting it is still up, you will encounter some serious lag... in fact, I don't think it'll ever recover, so you'd quickly end up in a mess with the API not releasing requests etc. I do intend to look into this, but as it's only for querying our local server at the moment, it's not priority. PRs are welcomed if anyone else has the interest in tackling it though.
 * The UI is pretty bad - I've not started any of the styling yet. I'm torn between going with vanilla CSS or using SASS for the additional learning opportunity it would offer.
