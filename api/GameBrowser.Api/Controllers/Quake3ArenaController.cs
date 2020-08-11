@@ -1,8 +1,9 @@
-﻿using GameBrowser.Api.Models;
+﻿using GameBrowser.Api.Mappers;
+using GameBrowser.Enums;
 using GameBrowser.Managers;
-using GameBrowser.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using ApiModels = GameBrowser.Api.Models;
 
 namespace GameBrowser.Api.Controllers
 {
@@ -19,9 +20,10 @@ namespace GameBrowser.Api.Controllers
 
         [HttpGet]
         [Route("{IpAddress}/{Port}")]
-        public async Task<ActionResult> GetServerInformation([FromRoute, ModelBinder] ServerInfoRequest request)
+        public async Task<ActionResult> GetServerInformation([FromRoute, ModelBinder] ApiModels.ServerInfoRequest request)
         {
-            var serverDetails = _q3aManager.GetServerDetails(request.IpAddress, request.Port);
+            var serverRequest = new ServerInfoRequestMapper().Map(request, GameType.Quake3);
+            var serverDetails = await _q3aManager.GetServerDetails(serverRequest);
 
             if (serverDetails.Status != ServerStatus.Offline)
                 return Ok(serverDetails);

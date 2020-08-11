@@ -1,4 +1,4 @@
-﻿namespace GameBrowser.Models
+﻿namespace GameBrowser.Enums
 {
     public enum ServerStatus
     {

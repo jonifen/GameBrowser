@@ -1,4 +1,4 @@
-﻿namespace GameBrowser.Models.Q3A
+﻿namespace GameBrowser.Models.Quake3
 {
     public class Player
     {

@@ -1,8 +1,9 @@
 ﻿using GameBrowser.Clients;
-using GameBrowser.Mappers;
+using GameBrowser.Mappers.Quake3;
 using GameBrowser.Models;
-using GameBrowser.Models.Q3A;
+using GameBrowser.Models.Quake3;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GameBrowser.Managers
 {
@@ -10,23 +11,23 @@ namespace GameBrowser.Managers
     {
         private readonly IQ3AServerClient _q3aServerClient;
         private readonly IPingClient _pingClient;
-        private readonly IQ3AServerResponseMapper _q3aServerResponseMapper;
+        private readonly IServerResponseMapper _q3aServerResponseMapper;
 
-        public Q3AManager(IQ3AServerClient q3aServerClient, IPingClient pingClient, IQ3AServerResponseMapper q3aServerResponseMapper)
+        public Q3AManager(IQ3AServerClient q3aServerClient, IPingClient pingClient, IServerResponseMapper q3aServerResponseMapper)
         {
             _q3aServerClient = q3aServerClient;
             _pingClient = pingClient;
             _q3aServerResponseMapper = q3aServerResponseMapper;
         }
 
-        public ServerDetails GetServerDetails(string ipAddress, int port)
+        public async Task<ServerDetails> GetServerDetails(ServerInfoRequest request)
         {
-            var pingResponse = _pingClient.Ping(ipAddress);
-            var serverResponse = pingResponse.Success ? _q3aServerClient.GetStatus(ipAddress, port) : BuildNullServerResponse();
+            var pingResponse = await _pingClient.Ping(request.IpAddress);
+            var serverResponse = pingResponse.Success ? _q3aServerClient.GetStatus(request.IpAddress, request.Port) : BuildNullServerResponse();
 
             var mappedResponse = serverResponse.Success ? _q3aServerResponseMapper.Map(serverResponse.Data) : BuildNullServerDetails();
-            mappedResponse.IpAddress = ipAddress;
-            mappedResponse.Port = port;
+            mappedResponse.IpAddress = request.IpAddress;
+            mappedResponse.Port = request.Port;
             mappedResponse.Ping = pingResponse.Milliseconds;
             return mappedResponse;
         }

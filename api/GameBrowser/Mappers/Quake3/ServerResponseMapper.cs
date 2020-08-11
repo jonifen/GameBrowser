@@ -1,10 +1,10 @@
-﻿using GameBrowser.Models.Q3A;
+﻿using GameBrowser.Models.Quake3;
 using System;
 using System.Collections.Generic;
 
-namespace GameBrowser.Mappers
+namespace GameBrowser.Mappers.Quake3
 {
-    public class Q3AServerResponseMapper : IQ3AServerResponseMapper
+    public class ServerResponseMapper : IServerResponseMapper
     {
         // An example payload broken down by newline character (explains the magic numbers used).
         // [0] = "????statusResponse
@@ -59,7 +59,7 @@ namespace GameBrowser.Mappers
             // Start iterator at 2 to pull player data only
             for (var i = 2; i < data.Length; i++)
             {
-                if ((data[i] != "") && (data[i] != "0"))
+                if (data[i] != "" && data[i] != "0")
                 {
                     var playerInfoArray = data[i].Split(spaceChar);
 

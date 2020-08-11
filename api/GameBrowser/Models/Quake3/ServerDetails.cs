@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using GameBrowser.Enums;
+using System.Collections.Generic;
 
-namespace GameBrowser.Models.Q3A
+namespace GameBrowser.Models.Quake3
 {
     public class ServerDetails
     {

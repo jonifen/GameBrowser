@@ -1,5 +1,5 @@
-﻿using GameBrowser.Mappers;
-using GameBrowser.Models.Q3A;
+﻿using GameBrowser.Mappers.Quake3;
+using GameBrowser.Models.Quake3;
 using NUnit.Framework;
 using System.Collections.Generic;
 
@@ -10,6 +10,8 @@ namespace GameBrowser.Tests.Mappers
     {
         private string _serverResponse;
         private List<Player> _expectedPlayers;
+        private ServerResponseMapper _mapper;
+        private ServerDetails _result;
 
         // Example payloads
         // "????statusResponse\n\\capturelimit\\8\\g_maxGameClients\\0\\bot_minplayers\\5\\sv_floodProtect\\1\\sv_maxPing\\0\\sv_minPing\\0\\sv_dlRate\\100\\sv_maxRate\\0\\sv_minRate\\0\\sv_maxclients\\12\\sv_hostname\\Home Server\\g_gametype\\0\\timelimit\\15\\fraglimit\\20\\dmflags\\0\\version\\ioq3 1.36_GIT_f2c61c14-2020-02-11 linux-x86_64 Apr 11 2020\\com_gamename\\Quake3Arena\\com_protocol\\71\\mapname\\Q3DM8\\sv_privateClients\\0\\sv_allowDownload\\0\\gamename\\baseq3\\g_needpass\\0\n15 3 \"^5AbyssMisty\"\n13 0 \"Doom\"\n6 0 \"Angel\"\n10 4 \"^1cherry\"\n6 0 \"Phobos\"\n"
@@ -52,16 +54,28 @@ namespace GameBrowser.Tests.Mappers
                     Score = 6
                 }
             };
+
+            _mapper = new ServerResponseMapper();
+
+            _result = _mapper.Map(_serverResponse);
         }
 
         [Test]
-        public void MapTest()
+        public void CanMapGameName()
         {
-            var mappedResponse = new Q3AServerResponseMapper().Map(_serverResponse);
+            Assert.AreEqual("baseq3", _result.GameName);
+        }
 
-            Assert.AreEqual("baseq3", mappedResponse.GameName);
-            Assert.AreEqual(_expectedPlayers.Count, mappedResponse.Players.Count);
-            Assert.AreEqual("Doom", mappedResponse.Players[1].Name);
+        [Test]
+        public void CanMapPlayerCount()
+        {
+            Assert.AreEqual(_expectedPlayers.Count, _result.Players.Count);
+        }
+
+        [Test]
+        public void CanMapSecondPlayerName()
+        {
+            Assert.AreEqual("Doom", _result.Players[1].Name);
         }
     }
 }

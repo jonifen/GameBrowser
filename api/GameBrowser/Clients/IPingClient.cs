@@ -1,9 +1,10 @@
 ﻿using GameBrowser.Models;
+using System.Threading.Tasks;
 
 namespace GameBrowser.Clients
 {
     public interface IPingClient
     {
-        PingResponse Ping(string ipAddress);
+        Task<PingResponse> Ping(string ipAddress);
     }
 }

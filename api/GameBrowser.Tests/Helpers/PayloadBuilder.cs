@@ -1,5 +1,5 @@
 ﻿using GameBrowser.Models;
-using GameBrowser.Models.Q3A;
+using GameBrowser.Models.Quake3;
 using System;
 
 namespace GameBrowser.Tests.Helpers

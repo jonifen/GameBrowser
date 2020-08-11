@@ -10,15 +10,15 @@ namespace GameBrowser.Clients
     {
         public ServerInfoResponse GetInfo(string ipAddress, int port)
         {
-            return GetServerDetails(ipAddress, port, "getinfo");
+            return GetDetails(ipAddress, port, "getinfo");
         }
 
         public ServerInfoResponse GetStatus(string ipAddress, int port)
         {
-            return GetServerDetails(ipAddress, port, "getstatus");
+            return GetDetails(ipAddress, port, "getstatus");
         }
 
-        private ServerInfoResponse GetServerDetails(string ipAddress, int port, string command)
+        private ServerInfoResponse GetDetails(string ipAddress, int port, string command)
         {
             // Make connection to game server, send data to server to request server info
             // Get server status: "ÿÿÿÿgetstatus"
