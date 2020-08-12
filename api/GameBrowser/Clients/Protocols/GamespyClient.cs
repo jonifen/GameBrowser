@@ -9,32 +9,32 @@ namespace GameBrowser.Clients.Protocols
     {
         private readonly IUdpServerClient _udpClient;
 
-        public GamespyClient(IUdpServerClient udpClient)
+        public GamespyClient(IUdpServerClient udpServerClient)
         {
-            _udpClient = udpClient;
+            _udpClient = udpServerClient;
         }
 
-        public async Task<ServerInfoResponse> GetStatus(string ipAddress, int port)
+        public async Task<ServerResponse> GetStatus(string ipAddress, int port)
         {
             return await MakeRequest(ipAddress, port, "\\status\\");
         }
 
-        public async Task<ServerInfoResponse> GetInfo(string ipAddress, int port)
+        public async Task<ServerResponse> GetInfo(string ipAddress, int port)
         {
             return await MakeRequest(ipAddress, port, "\\info\\");
         }
 
-        public async Task<ServerInfoResponse> GetRules(string ipAddress, int port)
+        public async Task<ServerResponse> GetRules(string ipAddress, int port)
         {
             return await MakeRequest(ipAddress, port, "\\rules\\");
         }
 
-        public async Task<ServerInfoResponse> GetPlayers(string ipAddress, int port)
+        public async Task<ServerResponse> GetPlayers(string ipAddress, int port)
         {
             return await MakeRequest(ipAddress, port, "\\players\\");
         }
 
-        private async Task<ServerInfoResponse> MakeRequest(string ipAddress, int port, string command)
+        private async Task<ServerResponse> MakeRequest(string ipAddress, int port, string command)
         {
             var request = new Request
             {
@@ -45,7 +45,7 @@ namespace GameBrowser.Clients.Protocols
 
             var response = await _udpClient.GetData(request);
 
-            return new ServerInfoResponse
+            return new ServerResponse
             {
                 Data = response.Payload,
                 Success = response.Success,

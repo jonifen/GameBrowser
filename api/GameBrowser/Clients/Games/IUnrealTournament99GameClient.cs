@@ -1,9 +1,9 @@
 ﻿using GameBrowser.Models;
 using System.Threading.Tasks;
 
-namespace GameBrowser.Clients.Protocols
+namespace GameBrowser.Clients.Games
 {
-    public interface IGamespyClient
+    public interface IUnrealTournament99GameClient
     {
         Task<ServerResponse> GetInfo(string ipAddress, int port);
         Task<ServerResponse> GetPlayers(string ipAddress, int port);

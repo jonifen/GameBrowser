@@ -1,4 +1,5 @@
 ﻿using GameBrowser.Clients;
+using GameBrowser.Clients.Games;
 using GameBrowser.Mappers.Quake3;
 using GameBrowser.Models;
 using GameBrowser.Models.Quake3;
@@ -7,23 +8,23 @@ using System.Threading.Tasks;
 
 namespace GameBrowser.Managers
 {
-    public class Q3AManager : IQ3AManager
+    public class Quake3Manager : IQuake3Manager
     {
-        private readonly IQ3AServerClient _q3aServerClient;
+        private readonly IQuake3GameClient _gameClient;
         private readonly IPingClient _pingClient;
-        private readonly IServerResponseMapper _q3aServerResponseMapper;
+        private readonly IStatusResponseMapper _q3aServerResponseMapper;
 
-        public Q3AManager(IQ3AServerClient q3aServerClient, IPingClient pingClient, IServerResponseMapper q3aServerResponseMapper)
+        public Quake3Manager(IQuake3GameClient quake3GameClient, IPingClient pingClient, IStatusResponseMapper q3aServerResponseMapper)
         {
-            _q3aServerClient = q3aServerClient;
+            _gameClient = quake3GameClient;
             _pingClient = pingClient;
             _q3aServerResponseMapper = q3aServerResponseMapper;
         }
 
-        public async Task<ServerDetails> GetServerDetails(ServerInfoRequest request)
+        public async Task<ServerStatusDetails> GetStatus(ServerRequest request)
         {
             var pingResponse = await _pingClient.Ping(request.IpAddress);
-            var serverResponse = pingResponse.Success ? _q3aServerClient.GetStatus(request.IpAddress, request.Port) : BuildNullServerResponse();
+            var serverResponse = pingResponse.Success ? await _gameClient.GetStatus(request.IpAddress, request.Port) : BuildNullServerResponse();
 
             var mappedResponse = serverResponse.Success ? _q3aServerResponseMapper.Map(serverResponse.Data) : BuildNullServerDetails();
             mappedResponse.IpAddress = request.IpAddress;
@@ -32,9 +33,9 @@ namespace GameBrowser.Managers
             return mappedResponse;
         }
 
-        private ServerInfoResponse BuildNullServerResponse()
+        private ServerResponse BuildNullServerResponse()
         {
-            return new ServerInfoResponse
+            return new ServerResponse
             {
                 Data = string.Empty,
                 Error = "Error in response",
@@ -42,9 +43,9 @@ namespace GameBrowser.Managers
             };
         }
 
-        private ServerDetails BuildNullServerDetails()
+        private ServerStatusDetails BuildNullServerDetails()
         {
-            return new ServerDetails
+            return new ServerStatusDetails
             {
                 Name = "Unknown",
                 Players = new List<Player>(),

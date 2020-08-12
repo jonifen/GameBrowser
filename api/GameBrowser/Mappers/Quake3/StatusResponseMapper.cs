@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace GameBrowser.Mappers.Quake3
 {
-    public class ServerResponseMapper : IServerResponseMapper
+    public class StatusResponseMapper : IStatusResponseMapper
     {
         // An example payload broken down by newline character (explains the magic numbers used).
         // [0] = "????statusResponse
@@ -16,16 +16,17 @@ namespace GameBrowser.Mappers.Quake3
         // [6] = "6 0 \"Phobos\""
         // [7] = ""
 
-        public ServerDetails Map(string payload)
+        public ServerStatusDetails Map(string payload)
         {
-            var data = payload.Split('\n');
+            var parsed = payload.Replace("\0", "");
+            var data = parsed.Split('\n');
             var details = MapServerDetails(data[1]);
             details.Players = MapPlayerInfo(data);
 
             return details;
         }
 
-        private ServerDetails MapServerDetails(string payload)
+        private ServerStatusDetails MapServerDetails(string payload)
         {
             var serverDetailsArray = payload.Split('\\');
             var info = new Dictionary<string, string>();
@@ -40,7 +41,7 @@ namespace GameBrowser.Mappers.Quake3
                 }
             }
 
-            return new ServerDetails
+            return new ServerStatusDetails
             {
                 AllDetails = info,
                 GameName = info["gamename"],

@@ -2,7 +2,7 @@
 
 namespace GameBrowser.Models
 {
-    public class ServerInfoRequest
+    public class ServerRequest
     {
         public string IpAddress { get; set; }
         public int Port { get; set; }

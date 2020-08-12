@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GameBrowser.Models.Quake3
 {
-    public class ServerDetails
+    public class ServerStatusDetails
     {
         public Dictionary<string, string> AllDetails { get; set; }
         public string GameName { get; set; }

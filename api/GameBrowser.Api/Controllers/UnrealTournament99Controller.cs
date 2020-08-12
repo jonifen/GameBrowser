@@ -10,15 +10,15 @@ namespace GameBrowser.Api.Controllers
     [ApiController]
     public class UnrealTournament99Controller : ControllerBase
     {
-        private readonly IUT99Manager _manager;
+        private readonly IUnrealTournament99Manager _manager;
 
-        public UnrealTournament99Controller(IUT99Manager manager)
+        public UnrealTournament99Controller(IUnrealTournament99Manager manager)
         {
             _manager = manager;
         }
 
         [HttpGet]
-        [Route("{IpAddress}/{Port}")]
+        [Route("{IpAddress}/{Port}/info")]
         public async Task<IActionResult> GetInfo([FromRoute, ModelBinder] ApiModels.ServerInfoRequest request)
         {
             var serverRequest = new ServerInfoRequestMapper().Map(request, GameType.UnrealTournament99);

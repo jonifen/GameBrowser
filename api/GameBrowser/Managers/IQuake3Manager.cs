@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 
 namespace GameBrowser.Managers
 {
-    public interface IQ3AManager
+    public interface IQuake3Manager
     {
-        Task<ServerDetails> GetServerDetails(ServerInfoRequest request);
+        Task<ServerStatusDetails> GetStatus(ServerRequest request);
     }
 }

@@ -1,5 +1,5 @@
 ﻿using GameBrowser.Clients;
-using GameBrowser.Clients.Protocols;
+using GameBrowser.Clients.Games;
 using GameBrowser.Enums;
 using GameBrowser.Managers;
 using GameBrowser.Mappers.UnrealTournament99;
@@ -13,27 +13,26 @@ namespace GameBrowser.Tests.Managers.UT99ManagerTests
 {
     public class GetInfoTests
     {
-        private Mock<IGamespyClient> _mockGamespyClient;
         private Mock<IPingClient> _mockPingClient;
         private Mock<IInfoResponseMapper> _mockInfoResponseMapper;
-        private IUT99Manager _manager;
+        private IUnrealTournament99Manager _manager;
         private ServerInfoDetails _result;
-        private ServerInfoRequest _serverRequest;
-        private ServerInfoResponse _serverResponse;
+        private ServerRequest _serverRequest;
+        private ServerResponse _serverResponse;
         private PingResponse _pingResponse;
+        private Mock<IUnrealTournament99GameClient> _mockUnrealTournament99GameClient;
 
         [SetUp]
         public async Task SetUp()
         {
-            _serverRequest = new ServerInfoRequest
+            _serverRequest = new ServerRequest
             {
-                //IpAddress = "192.168.200.201",
-                IpAddress = "185.107.96.18", // TODO - comment this out before commit
-                Port = 7778, // Port 7777 for game, 7778 for server query
+                IpAddress = "192.168.200.201",
+                Port = 7778,
                 GameType = GameType.UnrealTournament99
             };
 
-            _serverResponse = new ServerInfoResponse
+            _serverResponse = new ServerResponse
             {
                 Data = @"\hostname\test server name\hostport\7777\maptitle\CTF-Bolt_HE (High End Systems)\mapname\CTF-Bolt_HE\gametype\ACLCTFGame\numplayers\11\maxplayers\13\gamemode\openplaying\gamever\451\minnetver\432\worldlog\false\wantworldlog\false\queryid\12.1\final\",
                 Success = true,
@@ -46,23 +45,15 @@ namespace GameBrowser.Tests.Managers.UT99ManagerTests
                 Success = true
             };
 
-            _mockGamespyClient = new Mock<IGamespyClient>();
+            _mockUnrealTournament99GameClient = new Mock<IUnrealTournament99GameClient>();
             _mockPingClient = new Mock<IPingClient>();
             _mockInfoResponseMapper = new Mock<IInfoResponseMapper>();
 
             _mockPingClient.Setup(c => c.Ping(_serverRequest.IpAddress)).ReturnsAsync(_pingResponse);
-            _mockGamespyClient.Setup(c => c.GetInfo(_serverRequest.IpAddress, _serverRequest.Port)).ReturnsAsync(_serverResponse);
+            _mockUnrealTournament99GameClient.Setup(c => c.GetInfo(_serverRequest.IpAddress, _serverRequest.Port)).ReturnsAsync(_serverResponse);
             _mockInfoResponseMapper.Setup(c => c.Map(_serverResponse.Data)).Returns(new ServerInfoDetails { HostName = "test server name" });
 
-            _manager = new UT99Manager(_mockGamespyClient.Object, _mockPingClient.Object, _mockInfoResponseMapper.Object);
-            //_manager = new UT99Manager(
-            //    new GamespyClient(
-            //        new UdpServerClient(
-            //            new SocketProxy(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp)
-            //        )
-            //    ),
-            //    new PingClient(),
-            //    new InfoResponseMapper());
+            _manager = new UnrealTournament99Manager(_mockUnrealTournament99GameClient.Object, _mockPingClient.Object, _mockInfoResponseMapper.Object);
 
             _result = await _manager.GetInfo(_serverRequest);
         }
@@ -86,9 +77,9 @@ namespace GameBrowser.Tests.Managers.UT99ManagerTests
         }
 
         [Test]
-        public void ShouldCallGamespyClientMock()
+        public void ShouldCallGameClientMock()
         {
-            _mockGamespyClient.Verify(c => c.GetInfo(_serverRequest.IpAddress, _serverRequest.Port), Times.Once);
+            _mockUnrealTournament99GameClient.Verify(c => c.GetInfo(_serverRequest.IpAddress, _serverRequest.Port), Times.Once);
         }
 
         [Test]

@@ -6,9 +6,9 @@ namespace GameBrowser.Api.Mappers
 {
     public class ServerInfoRequestMapper
     {
-        public DomainModels.ServerInfoRequest Map(ApiModels.ServerInfoRequest request, GameType gameType)
+        public DomainModels.ServerRequest Map(ApiModels.ServerInfoRequest request, GameType gameType)
         {
-            return new DomainModels.ServerInfoRequest
+            return new DomainModels.ServerRequest
             {
                 IpAddress = request.IpAddress,
                 Port = request.Port,

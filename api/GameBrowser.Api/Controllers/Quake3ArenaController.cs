@@ -11,9 +11,9 @@ namespace GameBrowser.Api.Controllers
     [ApiController]
     public class Quake3ArenaController : ControllerBase
     {
-        private readonly IQ3AManager _q3aManager;
+        private readonly IQuake3Manager _q3aManager;
 
-        public Quake3ArenaController(IQ3AManager q3aManager)
+        public Quake3ArenaController(IQuake3Manager q3aManager)
         {
             _q3aManager = q3aManager;
         }
@@ -23,7 +23,7 @@ namespace GameBrowser.Api.Controllers
         public async Task<ActionResult> GetServerInformation([FromRoute, ModelBinder] ApiModels.ServerInfoRequest request)
         {
             var serverRequest = new ServerInfoRequestMapper().Map(request, GameType.Quake3);
-            var serverDetails = await _q3aManager.GetServerDetails(serverRequest);
+            var serverDetails = await _q3aManager.GetStatus(serverRequest);
 
             if (serverDetails.Status != ServerStatus.Offline)
                 return Ok(serverDetails);

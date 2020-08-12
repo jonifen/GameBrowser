@@ -1,6 +1,6 @@
 ﻿namespace GameBrowser.Models
 {
-    public class ServerInfoResponse
+    public class ServerResponse
     {
         public bool Success { get; set; }
         public string Data { get; set; }

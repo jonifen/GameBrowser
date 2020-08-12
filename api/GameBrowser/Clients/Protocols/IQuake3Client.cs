@@ -3,11 +3,9 @@ using System.Threading.Tasks;
 
 namespace GameBrowser.Clients.Protocols
 {
-    public interface IGamespyClient
+    public interface IQuake3Client
     {
         Task<ServerResponse> GetInfo(string ipAddress, int port);
-        Task<ServerResponse> GetPlayers(string ipAddress, int port);
-        Task<ServerResponse> GetRules(string ipAddress, int port);
         Task<ServerResponse> GetStatus(string ipAddress, int port);
     }
 }

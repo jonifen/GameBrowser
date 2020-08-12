@@ -9,7 +9,7 @@ namespace GameBrowser.Api.Tests.Mappers
     {
         private ServerInfoRequest _input;
         private GameType _gameType;
-        private GameBrowser.Models.ServerInfoRequest _result;
+        private GameBrowser.Models.ServerRequest _result;
 
         [SetUp]
         public void SetUp()

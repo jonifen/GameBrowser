@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 
 namespace GameBrowser
 {
-    public interface IUT99Manager
+    public interface IUnrealTournament99Manager
     {
-        Task<ServerInfoDetails> GetInfo(ServerInfoRequest request);
+        Task<ServerInfoDetails> GetInfo(ServerRequest request);
     }
 }
