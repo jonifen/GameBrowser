@@ -1,3 +1,4 @@
+using GameBrowser.Api.Mappers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -36,6 +37,8 @@ namespace GameBrowser.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GameBrowser API", Version = "v1" });
             });
+
+            services.AddScoped<IServerInfoRequestMapper, ServerInfoRequestMapper>();
 
             // Call method in GameBrowser project to configure IoC for its own types
             // (is there a better way of doing this? How would I do it if it was a NuGet?)

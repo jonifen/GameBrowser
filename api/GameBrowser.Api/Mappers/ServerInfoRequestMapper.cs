@@ -4,7 +4,7 @@ using DomainModels = GameBrowser.Models;
 
 namespace GameBrowser.Api.Mappers
 {
-    public class ServerInfoRequestMapper
+    public class ServerInfoRequestMapper : IServerInfoRequestMapper
     {
         public DomainModels.ServerRequest Map(ApiModels.ServerInfoRequest request, GameType gameType)
         {
