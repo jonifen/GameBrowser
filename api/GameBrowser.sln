@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameBrowser", "GameBrowser\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameBrowser.Api", "GameBrowser.Api\GameBrowser.Api.csproj", "{C5328448-AA22-48E4-8B39-5F96B3C84A9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameBrowser.Api.Tests", "GameBrowser.Api.Tests\GameBrowser.Api.Tests.csproj", "{008D4F7A-1F83-44B0-978F-304BE643B253}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameBrowser.Api.Tests", "GameBrowser.Api.Tests\GameBrowser.Api.Tests.csproj", "{008D4F7A-1F83-44B0-978F-304BE643B253}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{87C7CAFE-537C-4613-8596-08ADF709BBC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +38,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{61B1E09E-9996-48C7-B971-9D3A7DA42C35} = {87C7CAFE-537C-4613-8596-08ADF709BBC6}
+		{008D4F7A-1F83-44B0-978F-304BE643B253} = {87C7CAFE-537C-4613-8596-08ADF709BBC6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DBC741D6-785E-47A6-9380-A453868AA165}
