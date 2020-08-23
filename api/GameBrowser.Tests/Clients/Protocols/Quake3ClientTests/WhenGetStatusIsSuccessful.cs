@@ -32,7 +32,7 @@ namespace GameBrowser.Tests.Clients.Protocols.Quake3ClientTests
                 Error = null
             };
 
-            _udpRequestPayload = new byte[] { 255, 255, 255, 255, 103, 101, 116, 115, 116, 97, 116, 117, 115 };
+            _udpRequestPayload = new byte[] { 255, 255, 255, 255, 103, 101, 116, 115, 116, 97, 116, 117, 115, 0 };
             _udpRequestPayloadString = System.Text.Encoding.Default.GetString(_udpRequestPayload);
 
             _expectedResponse = new ServerResponse

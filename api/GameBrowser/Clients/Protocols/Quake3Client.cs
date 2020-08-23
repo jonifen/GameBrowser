@@ -46,12 +46,14 @@ namespace GameBrowser.Clients.Protocols
 
         private byte[] BuildPayload(string command)
         {
-            var originalCommandBytes = Encoding.ASCII.GetBytes(command);
+            var commandBytes = Encoding.ASCII.GetBytes(command);
 
             // Build the first 4 characters (ÿÿÿÿ)
             var prefix = new byte[] { 255, 255, 255, 255 };
-            
-            return prefix.Concat(originalCommandBytes).ToArray();
+
+            var firstStep = prefix.Concat(commandBytes);
+
+            return firstStep.Concat(new byte[] { 0 }).ToArray();
         }
     }
 }
