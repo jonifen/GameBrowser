@@ -22,6 +22,8 @@ The API is a .NET Core 3.1 web api project that consumes the library to expose t
 
 ### Web
 
+Repository: https://github.com/jonifen/gamebrowser-web
+
 Written in JavaScript using React, this is a simple web application to query the API based on server data stored in localStorage.
 
 ## Known "issues"
