@@ -22,8 +22,10 @@ The API is a .NET Core 3.1 web api project that consumes the library to expose t
 
 #### Docker
 
+```
 docker build -t jonifen/gamebrowser-api .
 docker run -itd --name gamebrowser-api -p 9003:80 --restart=always jonifen/gamebrowser-api
+```
 
 ### Web
 
