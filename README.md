@@ -20,6 +20,11 @@ The GameBrowser library is located in the `api` directory and is a .NET Standard
 
 The API is a .NET Core 3.1 web api project that consumes the library to expose the necessary functionality via endpoints.
 
+#### Docker
+
+docker build -t jonifen/gamebrowser-api .
+docker run -itd --name gamebrowser-api -p 9003:80 --restart=always jonifen/gamebrowser-api
+
 ### Web
 
 Repository: https://github.com/jonifen/gamebrowser-web
